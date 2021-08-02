@@ -57,6 +57,10 @@ class Product(models.Model):
 
 # описать каждый продукт
 
+class Tile(Product):
+
+    size = models.CharField(max_length=255, verbose_name='Размер')
+    
 
 class CartProduct(models.Model):
 
