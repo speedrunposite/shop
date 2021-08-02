@@ -30,6 +30,24 @@ User = get_user_model()
 
     # class Meta: abstract = True означает, что мы не сможем создать миграцию для этой модели, она абстрактная (обобщитель)
 
+# чтобы выводить товары на сайте
+class LatestProductsManager:
+
+    @staticmethod
+    def get_products_for_main_page(*args, **kwargs):
+        products = []
+        ct_models = ContentType.objects.filter(model__in=args)
+        for ct_model in ct_models:
+            model_products = ct_model.model_class()._base_manager.all().order_by('-id')[:5]
+            products.extend(model_products)
+        return products
+
+
+class LatestProducts:
+
+    objects = LatestProductsManager()
+
+
 class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name='Имя категории')
@@ -55,20 +73,16 @@ class Product(models.Model):
         return self.title
 
 
-# описать каждый продукт
-
 class Tile(Product):
 
     size = models.CharField(max_length=255, verbose_name='Размер')
-    ed_izm = models.CharField(max_length=3, verbose_name='Единицы измерения')
-    
+    unit = models.CharField(max_length=255, verbose_name='Единица измерения')
+    width = models.CharField(max_length=255, verbose_name='Толщина')
 
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
 
-
-class Stairs(Product):
-    pass
-
-
+# описать лестницы и гранит
 
 class CartProduct(models.Model):
 
