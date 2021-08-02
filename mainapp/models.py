@@ -60,7 +60,13 @@ class Product(models.Model):
 class Tile(Product):
 
     size = models.CharField(max_length=255, verbose_name='Размер')
-    
+
+
+
+class Stairs(Product):
+    pass
+
+
 
 class CartProduct(models.Model):
 
