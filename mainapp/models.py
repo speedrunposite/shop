@@ -60,6 +60,8 @@ class Product(models.Model):
 class Tile(Product):
 
     size = models.CharField(max_length=255, verbose_name='Размер')
+    ed_izm = models.CharField(max_length=3, verbose_name='Единицы измерения')
+    
 
 
 
