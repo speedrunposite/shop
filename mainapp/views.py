@@ -9,6 +9,7 @@ def index(request):
     tiles = LatestProducts.objects.get_products_for_main_page('tile')
     stairs =  LatestProducts.objects.get_products_for_main_page('stair')
     return render(request, 'main/index.html', {'tiles': tiles, 'stairs':stairs})
+>>>>>>> b08b45918ea7fce339bd8858c76e1ff09a7a0514
 
 def about(request):
     return render(request, 'main/about.html')
