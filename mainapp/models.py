@@ -112,7 +112,12 @@ class Tile(Product):
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
 
-# описать лестницы и гранит
+class Stair(Product):
+
+    unit = models.CharField(max_length=255, verbose_name='Единица измерения')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
 
 class CartProduct(models.Model):
 
