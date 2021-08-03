@@ -1,9 +1,14 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType 
-from django.contrib.contenttypes.fields import GenericForeignKey 
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.urls import reverse
 
 User = get_user_model()
+
+def get_product_url(obj, viewname):
+    ct_model = obj.__class__.meta.model_name
+    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
 
 #-----main models-----
 # 1 Category
@@ -29,6 +34,7 @@ User = get_user_model()
     # related_name - переименование поля в коде (как я понял)
 
     # class Meta: abstract = True означает, что мы не сможем создать миграцию для этой модели, она абстрактная (обобщитель)
+    #reverse - Это означает, что вы ссылаетесь на url только по его атрибуту name - если вы хотите изменить сам url или представление, на которое он ссылается, вы можете сделать это, отредактировав только одно место - urls.py
 
 # чтобы выводить товары на сайте
 class LatestProductsManager:
@@ -81,6 +87,9 @@ class Tile(Product):
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
 
 # описать лестницы и гранит
 
