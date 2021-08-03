@@ -112,9 +112,6 @@ class Tile(Product):
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
 
-    def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
-
 # описать лестницы и гранит
 
 class CartProduct(models.Model):
