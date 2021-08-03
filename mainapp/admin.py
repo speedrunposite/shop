@@ -24,6 +24,8 @@ class TileAdminForm(ModelForm):
 # с помощью такой конструкции мы исключаем лишние категории из выбора при создании продукта
 class TileAdmin(admin.ModelAdmin):
 
+    form = TileAdminForm
+
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
             return ModelChoiceField(Category.objects.filter(slug='tiles'))
