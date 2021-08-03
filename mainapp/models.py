@@ -35,6 +35,7 @@ User = get_user_model()
     # related_name - переименование поля в коде (как я понял)
 
     # class Meta: abstract = True означает, что мы не сможем создать миграцию для этой модели, она абстрактная (обобщитель)
+    #reverse - Это означает, что вы ссылаетесь на url только по его атрибуту name - если вы хотите изменить сам url или представление, на которое он ссылается, вы можете сделать это, отредактировав только одно место - urls.py
 
 # чтобы выводить товары на сайте
 class LatestProductsManager:
@@ -110,6 +111,9 @@ class Tile(Product):
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
 
 # описать лестницы и гранит
 
