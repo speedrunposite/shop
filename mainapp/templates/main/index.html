@@ -9,26 +9,26 @@
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <link rproduct="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdproductivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rproduct="stylesheet"/>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-        <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+        <link href="{% static 'css/styles.css' %}" rproduct="stylesheet"/>
+        <link rproduct="stylesheet" href="{% static 'css/style1.css' %}">
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'home' %}">ДАНИЛА МАСТЕР.kz</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-labproduct="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labproductledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">Вся продукция</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Плитка</a></li>
@@ -45,34 +45,34 @@
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                <div id="carousproductExampleCaptions" class="carousproduct slide" data-bs-ride="carousproduct">
+                    <div class="carousproduct-indicators">
+                        <button type="button" data-bs-target="#carousproductExampleCaptions" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-labproduct="Slide 1"></button>
+                        <button type="button" data-bs-target="#carousproductExampleCaptions" data-bs-slide-to="1"
+                            aria-labproduct="Slide 2"></button>
+                        <button type="button" data-bs-target="#carousproductExampleCaptions" data-bs-slide-to="2"
+                            aria-labproduct="Slide 3"></button>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
+                    <div class="carousproduct-inner">
+                        <div class="carousproduct-item active">
                             <img src="{% static '/assets/slide_1.jpg' %}
                             " class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousproduct-item">
                             <img src="..." class="d-block w-100" alt="...">
 
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousproduct-item">
                             <img src="..." class="d-block w-100" alt="...">
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <button class="carousproduct-control-prev" type="button" data-bs-target="#carousproductExampleCaptions" data-bs-slide="prev">
+                        <span class="carousproduct-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <button class="carousproduct-control-next" type="button" data-bs-target="#carousproductExampleCaptions" data-bs-slide="next">
+                        <span class="carousproduct-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
@@ -81,22 +81,22 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">                                    {% for el in tiles %}
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">                                    {% for product in products %}
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="{{el.image.url}}" alt="..." />
+                            <img class="card-img-top" src="{{product.image.url}}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
                     
                                     <h5 class="fw-bolder">
-                                        {{el.title}}
+                                        {{product.title}}
                                     </h5>
                     
                                     <!-- Product price-->
-                                        {{el.price}} тг
+                                        {{product.price}} тг
                                 </div>
                             </div>
                     
@@ -104,9 +104,9 @@
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                             </div>
-                {% endfor %}
                         </div>
                     </div>
+                {% endfor %}
                 </div>
             </div>
         </section>
@@ -116,7 +116,7 @@
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdproductivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
     </body>
 </html>
