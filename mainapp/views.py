@@ -15,17 +15,18 @@ def about(request):
     return render(request, 'main/about.html')
 
 
-class TileListView(generic.ListView):
+class ProductDetailView(DetailView):
 
-    model = Tile
+    CT_MODEL_MODEL_CLASS = {
+        'tile' : Tile,
+        'stair' : Stair
+    }
 
-    def get_queryset(self):
-        return Tile.objects.order_by('title')
+    def dispatch(self, request, *args, **kwargs):
+        self.model = self.CT_MODEL_MODEL_CLASS[kwargs['ct_model']]
+        self.queryset = self.model._base_manager.all()
+        return super().dispatch(request, *args, **kwargs)
 
-
-class StairListView(generic.ListView):
-
-    model = Stair
-
-    def get_queryset(self):
-        return Stair.objects.order_by('title')
+    context_object_name = 'product'
+    template_name = 'product_detail.html'
+    sluq_url_kwarg = 'slug'
