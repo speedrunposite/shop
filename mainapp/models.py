@@ -109,12 +109,18 @@ class Tile(Product):
     unit = models.CharField(max_length=255, verbose_name='Единица измерения')
     width = models.CharField(max_length=255, verbose_name='Толщина')
 
+    def get_absolute_url(self):
+         return reversed('tiles', args=[str(self.slug)])
+
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
 
 class Stair(Product):
 
     unit = models.CharField(max_length=255, verbose_name='Единица измерения')
+
+    def get_absolute_url(self):
+         return reversed('stairs', args=[str(self.slug)])
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)

@@ -1,29 +1,37 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+<<<<<<< HEAD
 from django.views.generic import DetailView
 
-from .models import Tile
+from .models import *
 
 def index(request):
     # тут вернем шаблон
-    
+    tiles = LatestProducts.objects.get_products_for_main_page('tile')
+    stairs =  LatestProducts.objects.get_products_for_main_page('stair')
+    return render(request, 'main/index.html', {'tiles': tiles, 'stairs':stairs})
+=======
+from django.views import generic
+from .models import *
+
+def index(request):
     return render(request, 'main/index.html')
+>>>>>>> 91105cdd45e938a0c3740007012c18e157d6c9d5
 
 def about(request):
     return render(request, 'main/about.html')
 
-class ProductDetailsView(DetailView):
-    #словарь для продуктов
+class TileListView(generic.ListView):
 
-    CT_MODEL_CLASS={
-        'tiles': Tile   
-    }
+    model = Tile
 
-    def dispatch(self, request, *args, **kwargs):
-        self.model = self.CT_MODEL_CLASS[kwargs.get('ct_model')]
-        self.queryset = self.model._base_manager.all()
-        return super().dispatch(request, *args, **kwargs)
+    def get_queryset(self):
+        return Tile.objects.order_by('title')
 
-    content_object_name = 'product'
-    template_name = 'product_detail.html'
-    slug_url_kwargs = 'slug'
+
+class StairListView(generic.ListView):
+
+    model = Stair
+
+    def get_queryset(self):
+        return Stair.objects.order_by('title')
