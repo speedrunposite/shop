@@ -17,15 +17,12 @@ class TileAdminForm(ModelForm):
         img = Image.open(image)
         min_height, min_width = self.MIN_RESOLUTION
         if img.height < min_height or img.width < min_width:
-            raise ValidationError(
-                'Загруженное изображение: {}x{}. Минимально допустимое резрешение: {}x{}'.format(img.height, img.width, *self.MIN_RESOLUTION))
+            raise ValidationError('Разрешение изображения меньше минимального!')
         return image
 
 
 # с помощью такой конструкции мы исключаем лишние категории из выбора при создании продукта
 class TileAdmin(admin.ModelAdmin):
-
-    form = TileAdminForm
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
