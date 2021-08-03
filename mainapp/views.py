@@ -6,6 +6,7 @@ from .models import Tile
 
 def index(request):
     # тут вернем шаблон
+    
     return render(request, 'main/index.html')
 
 def about(request):
