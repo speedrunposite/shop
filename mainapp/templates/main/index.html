@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,12 +9,12 @@
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="css/style1.css">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+        <link rel="stylesheet" href="{% static 'css/style1.css' %}">
     </head>
     <body>
         <!-- Navigation-->
@@ -53,8 +55,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./assets/slide_1.jpg
-                            " class="d-block w-100" alt="...">
+                            <img src="" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
                             <img src="..." class="d-block w-100" alt="...">
@@ -285,6 +286,5 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>
