@@ -22,8 +22,6 @@ class TileAdminForm(ModelForm):
             raise ValidationError('Размер изображения не должен превышать 5MB!')
         if img.height < min_height or img.width < min_width:
             raise ValidationError('Разрешение изображения меньше минимального!')
-        if img.height > max_height or img.width > max_width:
-            raise ValidationError('Разрешение изображения больше максимального!')
         return image
 
 
@@ -56,8 +54,6 @@ class StairAdminForm(ModelForm):
             raise ValidationError('Размер изображения не должен превышать 5MB!')
         if img.height < min_height or img.width < min_width:
             raise ValidationError('Разрешение изображения меньше минимального!')
-        if img.height > max_height or img.width > max_width:
-            raise ValidationError('Разрешение изображения больше максимального!')
         return image
 
 
