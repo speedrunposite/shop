@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
+from django.views.generic.detail import DetailView
 from .models import *
 
 def index(request):
@@ -8,6 +9,15 @@ def index(request):
 
 def about(request):
     return render(request, 'main/about.html')
+
+class TitleDetailView(DetailView):
+
+    model = Tile
+
+
+class StairDetailView(DetailView):
+
+    model = Stair
 
 class TileListView(generic.ListView):
 
