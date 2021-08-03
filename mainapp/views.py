@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
 
-from .models import Tile
+from .models import *
 
 def index(request):
     # тут вернем шаблон
-    
-    return render(request, 'main/index.html')
+    tiles = LatestProducts.objects.get_products_for_main_page('tile')
+    stairs =  LatestProducts.objects.get_products_for_main_page('stair')
+    return render(request, 'main/index.html', {'tiles': tiles, 'stairs':stairs})
 
 def about(request):
     return render(request, 'main/about.html')
