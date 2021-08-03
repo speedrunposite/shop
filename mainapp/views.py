@@ -1,23 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views import generic
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView
+
 from .models import *
 
 def index(request):
-    return render(request, 'main/index.html')
+    # тут вернем шаблон
+    tiles = LatestProducts.objects.get_products_for_main_page('tile')
+    stairs =  LatestProducts.objects.get_products_for_main_page('stair')
+    return render(request, 'main/index.html', {'tiles': tiles, 'stairs':stairs})
 
 def about(request):
     return render(request, 'main/about.html')
 
-class TitleDetailView(DetailView):
-
-    model = Tile
-
-
-class StairDetailView(DetailView):
-
-    model = Stair
 
 class TileListView(generic.ListView):
 
