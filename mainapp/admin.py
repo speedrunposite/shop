@@ -9,8 +9,9 @@ class TileAdminForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].help_text = mark_safe(
-            '<span style="color:red; font-size:14px;">Загружайте изображение не более {}x{} с минимальным разрешением {}x{} и размером не более 5MB.</span>'.format(
-            *Product.MAX_RESOLUTION, *Product.MIN_RESOLUTION))
+            '<span style="color:red; font-size:14px;">Загружайте изображение с минимальным разрешением {}x{} и размером не более 5MB.<br>\
+                Изображение с разрешением более {}x{} автоматически сожмется до максимально возможного.</span>'.format(
+            *Product.MIN_RESOLUTION, *Product.MAX_RESOLUTION))
 
     def clean_image(self):
         image = self.cleaned_data['image']
@@ -42,8 +43,9 @@ class StairAdminForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].help_text = mark_safe(
-            '<span style="color:red; font-size:14px;">Загружайте изображение не более {}x{} с минимальным разрешением {}x{} и размером не более 5MB.</span>'.format(
-            *Product.MAX_RESOLUTION, *Product.MIN_RESOLUTION))
+            '<span style="color:red; font-size:14px;">Загружайте изображение с минимальным разрешением {}x{} и размером не более 5MB.<br>\
+                Изображение с разрешением более {}x{} автоматически сожмется до максимально возможного.</span>'.format(
+            *Product.MIN_RESOLUTION, *Product.MAX_RESOLUTION))
 
     def clean_image(self):
         image = self.cleaned_data['image']
