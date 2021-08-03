@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
+<<<<<<< HEAD
 from django.views.generic.detail import DetailView
+=======
+from django.views.generic import DetailView
+>>>>>>> 772022faf32c447908057b0b14ae8a029dfc4e12
 
 from .models import *
 
