@@ -17,8 +17,7 @@ class TileAdminForm(ModelForm):
         img = Image.open(image)
         min_height, min_width = self.MIN_RESOLUTION
         if img.height < min_height or img.width < min_width:
-            raise ValidationError(
-                'Загруженное изображение: {}x{}. Минимально допустимое резрешение: {}x{}'.format(img.height, img.width, *self.MIN_RESOLUTION))
+            raise ValidationError('Разрешение изображения меньше минимального!')
         return image
 
 
