@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -36,6 +37,10 @@ User = get_user_model()
 
     # class Meta: abstract = True означает, что мы не сможем создать миграцию для этой модели, она абстрактная (обобщитель)
     #reverse - Это означает, что вы ссылаетесь на url только по его атрибуту name - если вы хотите изменить сам url или представление, на которое он ссылается, вы можете сделать это, отредактировав только одно место - urls.py
+
+def get_product_url(obj, viewname):
+    ct_model = obj.__class__._meta.model_name
+    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
 
 # чтобы выводить товары на сайте
 class LatestProductsManager:
@@ -110,7 +115,7 @@ class Tile(Product):
     width = models.CharField(max_length=255, verbose_name='Толщина')
 
     def get_absolute_url(self):
-         return reversed('tiles', args=[str(self.slug)])
+        return get_product_url(self, 'product_detail')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
@@ -120,7 +125,7 @@ class Stair(Product):
     unit = models.CharField(max_length=255, verbose_name='Единица измерения')
 
     def get_absolute_url(self):
-         return reversed('stairs', args=[str(self.slug)])
+        return get_product_url(self, 'product_detail')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
