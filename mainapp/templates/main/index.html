@@ -39,8 +39,8 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="#!">Плитка</a></li>
-                            <li><a class="dropdown-item" href="#!">Лестница</a></li>
+                            <li><a class="dropdown-item" href="#tile">Плитка</a></li>
+                            <li><a class="dropdown-item" href="#stair">Лестница</a></li>
                             <li><a class="dropdown-item" href="#!">Гранит</a></li>
                             <li><a class="dropdown-item" href="#!">Брусчатка</a></li>
                         </ul>
@@ -91,27 +91,62 @@
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+            <h2 id="tile">Плитка</h2>
+            <div class="line mb-5"></div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
-                {% for product in products %}
+                {% for tile in tiles %}
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="main-card-img" src="{{product.image.url}}" alt="..." />
+                        <img class="main-card-img" src="{{tile.image.url}}" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
                                 
                                 <h5 class="fw-bolder">
-                                    {{product.title}}
+                                    {{tile.title}}
                                 </h5>
-                                    {{product.price}} тг
+                                    {{tile.price}} тг
                                 <!-- Product price-->
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ product.get_absolute_url }}">Подробнее</a>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ tile.get_absolute_url }}">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <h2 id="stair">Лестница</h2>
+            <div class="line mb-5"></div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
+                {% for stair in stairs %}
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="main-card-img" src="{{stair.image.url}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                
+                                <h5 class="fw-bolder">
+                                    {{stair.title}}
+                                </h5>
+                                    {{stair.price}} тг
+                                <!-- Product price-->
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ stair.get_absolute_url }}">Подробнее</a>
                             </div>
                         </div>
                     </div>
@@ -124,7 +159,7 @@
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Данила Мастер.kz</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

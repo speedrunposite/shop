@@ -8,7 +8,9 @@ from .models import *
 def index(request):
     # тут вернем шаблон
     products = LatestProducts.objects.get_products_for_main_page('tile', 'stair')
-    return render(request, 'main/index.html', {'products': products})
+    tiles = LatestProducts.objects.get_products_for_main_page('tile')
+    stairs = LatestProducts.objects.get_products_for_main_page('stair')
+    return render(request, 'main/index.html', {'tiles': tiles, 'stairs': stairs, 'products': products})
 
 
 def about(request):
