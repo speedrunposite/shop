@@ -99,8 +99,8 @@ class Product(models.Model):
             filestream = BytesIO()
             resized_new_img.save(filestream, 'JPEG', quality=90)
             name = '{}.jpeg'.format(*self.image.name.split('.'))
-                filestream.seek(0)
-                self.image = InMemoryUploadedFile(
+            filestream.seek(0)
+            self.image = InMemoryUploadedFile(
                 filestream, 'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None
             )
         super().save(*args, **kwargs)
@@ -133,6 +133,7 @@ class Stair(Product):
         
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
+
 
 class CartProduct(models.Model):
 
