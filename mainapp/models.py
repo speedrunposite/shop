@@ -81,7 +81,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
-    image = models.ImageField(verbose_name='Изображение')
+    image = models.ImageField(upload_to='', verbose_name='Изображение')
     description = models.TextField(verbose_name='Описание', null=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
 
@@ -100,12 +100,16 @@ class Product(models.Model):
             resized_new_img = new_img.resize((self.MAX_RESOLUTION[0], height_size), Image.ANTIALIAS)
             filestream = BytesIO()
             resized_new_img.save(filestream, 'JPEG', quality=90)
-            name = '{}.{}'.format(*self.image.name.split('.'))
+            name = '{}.jpeg'.format(*self.image.name.split('.'))
             filestream.seek(0)
             self.image = InMemoryUploadedFile(
                 filestream, 'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None
             )
         super().save(*args, **kwargs)
+    
+    def delete(self, using=None, keep_parents=False):
+        self.image.storage.delete(self.image.name)
+        super().delete()
 
 
 class Tile(Product):
