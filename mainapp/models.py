@@ -93,11 +93,9 @@ class Product(models.Model):
         img = Image.open(image)
         min_height, min_width = self.MIN_RESOLUTION
         max_height, max_width = self.MAX_RESOLUTION
-        if img.height >= max_height or img.width >= max_width:
+        if img.height > max_height or img.width > max_width:
             new_img = img.convert('RGB')
-            width_percent = (self.MIN_RESOLUTION[0]/float(img.size[0]))
-            height_size = int((float(img.size[1]) * float(width_percent)))
-            resized_new_img = new_img.resize((self.MIN_RESOLUTION[0], height_size), Image.ANTIALIAS)
+            resized_new_img = new_img.resize(self.MIN_RESOLUTION, Image.ANTIALIAS)
             filestream = BytesIO()
             resized_new_img.save(filestream, 'JPEG', quality=90)
             name = '{}.jpeg'.format(*self.image.name.split('.'))
