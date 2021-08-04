@@ -93,7 +93,7 @@ class Product(models.Model):
         img = Image.open(image)
         min_height, min_width = self.MIN_RESOLUTION
         max_height, max_width = self.MAX_RESOLUTION
-        if img.height > max_height or img.width > max_width:
+        if img.height >= max_height or img.width >= max_width:
             new_img = img.convert('RGB')
             width_percent = (self.MAX_RESOLUTION[0]/float(img.size[0]))
             height_size = int((float(img.size[1]) * float(width_percent)))
