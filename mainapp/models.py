@@ -99,10 +99,8 @@ class Product(models.Model):
             filestream = BytesIO()
             resized_new_img.save(filestream, 'JPEG', quality=90)
             name = '{}.jpeg'.format(*self.image.name.split('.'))
-                filestream.seek(0)
-                self.image = InMemoryUploadedFile(
-                filestream, 'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None
-            )
+            filestream.seek(0)
+            self.image = InMemoryUploadedFile(filestream, 'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None)
         super().save(*args, **kwargs)
     
     def delete(self, using=None, keep_parents=False):
