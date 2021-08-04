@@ -72,7 +72,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     MIN_RESOLUTION = (500, 500)
-    MAX_RESOLUTION = (1000, 1000)
+    MAX_RESOLUTION = (800, 800)
     MAX_IMAGE_SIZE = 5242880
 
     class Meta:
@@ -95,14 +95,13 @@ class Product(models.Model):
         max_height, max_width = self.MAX_RESOLUTION
         if img.height > max_height or img.width > max_width:
             new_img = img.convert('RGB')
-            resized_new_img = new_img.resize(self.MIN_RESOLUTION, Image.ANTIALIAS)
+            resized_new_img = new_img.resize((500, 500), Image.ANTIALIAS)
             filestream = BytesIO()
             resized_new_img.save(filestream, 'JPEG', quality=90)
             name = '{}.jpeg'.format(*self.image.name.split('.'))
             filestream.seek(0)
-            self.image = InMemoryUploadedFile(
-                filestream, 'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None
-            )
+            self.image = InMemoryUploadedFile(filestream, 
+            'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None)
         super().save(*args, **kwargs)
     
     def delete(self, using=None, keep_parents=False):
