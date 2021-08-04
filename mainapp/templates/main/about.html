@@ -2,18 +2,64 @@
 {% load static %}
 
     {% block body %}
-    Данила Мастер.кз является дочерней компанией Российская компании «Данила Мастер» ООО Руский гранит.
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static '/assets/slide_1.jpg' %}
+                                " class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
     
-    Имеем свой карьер по добыче гранита в Казахстане. (фото)
-    И на данный момент гранитные карьеры в собственности завода «Русский Гранит» - карьеры «Дымовский» и «Ладожский» (Фото)
-    Остальная продукция- на прямую с производителями, поэтому наши цены ниже чем в других
-    Вы всегда можете купить гранит, в слэбах, плите и других изделиях.
-    В Российской компании – наличие самого большого склада продукции, который насчитывает порядка 150 тысяч квадратных
-    метров. Его можно смело назвать галереей натуральных камней, собранных со всех уголков мира.
-    Перечень стран, камень из которых представлен на складе компании, заслуживает уважения. Это – Греция и Италия, Испания и
-    Индия, Турция и Бразилия, Китай и Египет, Россия и Украина, Иран и Пакистан, Ангола и Намибия, Финляндия и Вьетнам и
-    другие страны.
-    поставки от компании «Данила Мастер.кз». Поставки гранита высочайшего качества из различных точек земного шара от лучших
-    производителей – приоритетное направление деятельности компании.
-    Удовлетворение потребностей всех своих клиентов, включая самых взыскательных, – наша повседневная задача!
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <h3 class="text-center mt-5">Данила Мастер.кз является дочерней компанией Российская компании «Данила Мастер» ООО Руский гранит.</h3>
+        <div class="mt-5">
+            <h5 class="text-start">Имеем свой карьер по добыче гранита в Казахстане<h5>
+            <img src="{% static '/assets/img1_about.jpg' %}" class="rounded float-end img-thumbnail img_about">
+        </div>
+        <div class="text-start">
+            И на данный момент гранитные карьеры в собственности завода «Русский Гранит» - карьеры «Дымовский» и «Ладожский» (Фото)
+            Остальная продукция- на прямую с производителями, поэтому наши цены ниже чем в других
+            Вы всегда можете купить гранит, в слэбах, плите и других изделиях.
+        </div>
+        <div class="mt-5 text-start mb-5">
+            В Российской компании – наличие самого большого склада продукции, который насчитывает порядка 150 тысяч квадратных
+            метров. Его можно смело назвать галереей натуральных камней, собранных со всех уголков мира.
+            Перечень стран, камень из которых представлен на складе компании, заслуживает уважения. Это – Греция и Италия, Испания и
+            Индия, Турция и Бразилия, Китай и Египет, Россия и Украина, Иран и Пакистан, Ангола и Намибия, Финляндия и Вьетнам и
+            другие страны.
+            поставки от компании «Данила Мастер.кз». Поставки гранита высочайшего качества из различных точек земного шара от лучших
+            производителей – приоритетное направление деятельности компании.
+            Удовлетворение потребностей всех своих клиентов, включая самых взыскательных, – наша повседневная задача!
+
+        </div>
+    </main>
     {% endblock %}
