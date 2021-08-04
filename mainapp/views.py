@@ -12,6 +12,8 @@ def index(request):
     stairs = LatestProducts.objects.get_products_for_main_page('stair')
     return render(request, 'main/index.html', {'tiles': tiles, 'stairs': stairs, 'products': products})
 
+def review(request):
+    return render(request, 'main/review.html')
 
 def about(request):
     return render(request, 'main/about.html')
