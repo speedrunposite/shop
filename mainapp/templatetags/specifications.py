@@ -20,6 +20,7 @@ TABLE_CONTENT ="""
                                 </tr>
 """
 
+#Словарь с информацией для продуктов  "Название": "имя в бд"
 PRODUCT_SPEC = {
     'tile': {
         'Категория': 'category', 
@@ -41,6 +42,7 @@ def get_product_spec(product, model_name):
         table_content += TABLE_CONTENT.format(name=name, value=getattr(product, value))
     return table_content
 
+#Создаем тег шаблона
 @register.filter
 def product_spec(product):
     model_name = product.__class__._meta.model_name
