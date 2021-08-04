@@ -71,7 +71,7 @@ class Category(models.Model):
 
 class Product(models.Model):
 
-    MIN_RESOLUTION = (500, 500)
+    MIN_RESOLUTION = (100, 100)
     MAX_RESOLUTION = (800, 800)
     MAX_IMAGE_SIZE = 5242880
 
@@ -82,7 +82,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='', verbose_name='Изображение')
-    description = models.TextField(verbose_name='Описание', null=True)
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
 
     def __str__(self):
