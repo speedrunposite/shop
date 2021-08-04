@@ -132,6 +132,7 @@ class Stair(Product):
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
+
 class CartProduct(models.Model):
 
     user = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
