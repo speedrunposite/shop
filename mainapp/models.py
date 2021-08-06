@@ -133,6 +133,7 @@ class Stair(Product):
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
+# скоро сделаю отзывы и контакты
 
 class CartProduct(models.Model):
 
