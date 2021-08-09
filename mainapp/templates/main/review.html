@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>ДАНИЛА МАСТЕР.kz</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     <!-- Bootstrap icons-->
@@ -31,18 +30,18 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                             href="{% url 'home' %}">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Отзывы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Наши проекты</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Вся продукция</a></li>
+                            <li><a class="dropdown-item" href="/#tile">Вся продукция</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li><a class="dropdown-item" href="/#tile">Плитка</a></li>
                             <li><a class="dropdown-item" href="/#stair">Лестница</a></li>
-                            <li><a class="dropdown-item" href="#!">Гранит</a></li>
+                            <li><a class="dropdown-item" href="/#paving_slabs">Плиты мощения</a></li>
                             <li><a class="dropdown-item" href="#!">Брусчатка</a></li>
                         </ul>
                     </li>
@@ -58,11 +57,13 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              ...
+                              {% for contact in contacts %}
+                                {{contact.phone_number}}
+                                <br>
+                              {% endfor %}
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -76,9 +77,14 @@
                 <div class="row justify-content-md-center">
                     <div class="col-md-auto">
                         <ul class="list-group">
-                            <li class="list-group-item border border-4 rounded-pill mt-3 pt-3 pb-3">Это хороший камень--------------------------------------------</li>
-                            <li class="list-group-item border border-4 rounded-pill mt-3 pt-3 pb-3">Здесь еще описание</li>
-                            <li class="list-group-item border border-4 rounded-pill mt-3 pt-3 pb-3">Ну это все будет добавлятся через админку</li>
+                            {% for project in projects %}
+                            <li class="list-group-item border border-4 mt-3 pt-3 pb-3">
+                                <img src="{{project.image.url}}" class="rounded float-start me-3">
+                                <h5 class="text-center">{{project.title}}</h5>
+                                <p>{{project.description}}</p>
+                            </li>
+
+                            {% endfor %}
                         </ul>
                   </div>
                 </div>
