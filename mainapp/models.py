@@ -143,7 +143,7 @@ class Contact(models.Model):
     phone_number = models.CharField(max_length=255, verbose_name='Номер телефона')
 
     def __str__(self):
-        return '{}'.format(self.phone_number)
+        return 'Номер телефона: {}'.format(self.phone_number)
 
 
 class OurProject(models.Model):
@@ -157,6 +157,9 @@ class OurProject(models.Model):
     image = models.ImageField(upload_to='', verbose_name='Изображение')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
 
+    def __str__(self):
+        return self.title
+    
     def save(self, *args, **kwargs):
         image = self.image
         img = Image.open(image)

@@ -11,14 +11,14 @@ def index(request):
     tiles = LatestProducts.objects.get_products_for_main_page('tile')
     stairs = LatestProducts.objects.get_products_for_main_page('stair')
     paving_slabs = LatestProducts.objects.get_products_for_main_page('pavingslab')
-    contacts = LatestProducts.objects.get_products_for_main_page('contact')
+    contacts = Contact.objects.all()
     return render(request, 'main/index.html',
      {'tiles': tiles, 'stairs': stairs,'paving_slabs': paving_slabs,
     'contacts':contacts , 'products': products})
 
 def review(request):
-    projects = LatestProducts.objects.get_products_for_main_page('ourproject')
-    contacts = LatestProducts.objects.get_products_for_main_page('contact')
+    projects = OurProject.objects.all()
+    contacts = Contact.objects.all()
     return render(request, 'main/review.html', {'contacts':contacts, 'projects': projects })
 
 def about(request):
