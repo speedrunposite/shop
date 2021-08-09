@@ -10,10 +10,16 @@ def index(request):
     products = LatestProducts.objects.get_products_for_main_page('tile', 'stair')
     tiles = LatestProducts.objects.get_products_for_main_page('tile')
     stairs = LatestProducts.objects.get_products_for_main_page('stair')
-    return render(request, 'main/index.html', {'tiles': tiles, 'stairs': stairs, 'products': products})
+    paving_slabs = LatestProducts.objects.get_products_for_main_page('pavingslab')
+    contacts = LatestProducts.objects.get_products_for_main_page('contact')
+    return render(request, 'main/index.html',
+     {'tiles': tiles, 'stairs': stairs,'paving_slabs': paving_slabs,
+    'contacts':contacts , 'products': products})
 
 def review(request):
-    return render(request, 'main/review.html')
+    projects = LatestProducts.objects.get_products_for_main_page('ourproject')
+    contacts = LatestProducts.objects.get_products_for_main_page('contact')
+    return render(request, 'main/review.html', {'contacts':contacts, 'projects': projects })
 
 def about(request):
     return render(request, 'main/about.html')

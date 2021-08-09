@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>ДАНИЛА МАСТЕР.kz</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
     <!-- Bootstrap icons-->
@@ -31,18 +31,18 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                             href="{% url 'home' %}">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Отзывы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Наши проекты</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Вся продукция</a></li>
+                            <li><a class="dropdown-item" href="/#tile">Вся продукция</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li><a class="dropdown-item" href="/#tile">Плитка</a></li>
                             <li><a class="dropdown-item" href="/#stair">Лестница</a></li>
-                            <li><a class="dropdown-item" href="/paving_slabs#">Плиты мощения</a></li>
+                            <li><a class="dropdown-item" href="/#paving_slabs">Плиты мощения</a></li>
                             <li><a class="dropdown-item" href="#!">Брусчатка</a></li>
                         </ul>
                     </li>
@@ -58,11 +58,13 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              ...
+                              {% for contact in contacts %}
+                                {{contact.phone_number}}
+                                <br>
+                              {% endfor %}
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -169,6 +171,40 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ stair.get_absolute_url }}">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <h2 id="paving_slabs">Плиты мощения</h2>
+            <div class="line mb-5"></div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
+                {% for pv_slab in paving_slabs %}
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="main-card-img" src="{{pv_slab.image.url}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                
+                                <h5 class="fw-bolder">
+                                    {{pv_slab.title}}
+                                </h5>
+                                    от {{pv_slab.price}} тг {{pv_slab.unit}}
+                                <!-- Product price-->
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ pv_slab.get_absolute_url }}">Подробнее</a>
                             </div>
                         </div>
                     </div>

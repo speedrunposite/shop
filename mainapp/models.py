@@ -148,6 +148,10 @@ class Contact(models.Model):
 
 class OurProject(models.Model):
 
+    MIN_RESOLUTION = (100, 100)
+    MAX_RESOLUTION = (800, 800)
+    MAX_IMAGE_SIZE = 5242880
+
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='', verbose_name='Изображение')
