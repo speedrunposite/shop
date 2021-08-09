@@ -12,15 +12,6 @@ from django.urls import reverse
 User = get_user_model()
 
 
-#-----main models-----
-# 1 Category
-# 2 Product
-# 3 CartProduct
-# 4 Cart
-# 5 Order
-#--------------------
-# 6 Customer
-
 #-----Notes-----
     #  "slug"-это способ генерации действительного URL, как правило, с использованием уже полученных данных.
     #  /categories/stone/ - например 'stone' это и есть slug
@@ -133,38 +124,51 @@ class Stair(Product):
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
-# скоро сделаю отзывы и контакты
 
-class CartProduct(models.Model):
+class PavingSlab(Product):
 
-    user = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
-    cart = models.ForeignKey('Cart',  verbose_name='Корзина', on_delete=models.CASCADE, related_name='related_products')
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
-    qty = models.PositiveIntegerField(default=1)
-    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
+    size = models.CharField(max_length=255, verbose_name='Размер')
+    unit = models.CharField(max_length=255, verbose_name='Единица измерения')
+    width = models.CharField(max_length=255, verbose_name='Толщина')
 
     def __str__(self):
-        return 'Продукт: {} (для корзины)'.format(self.product.title)
+        return '{} : {}'.format(self.category.name, self.title)
+        
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
 
 
-class Cart(models.Model):
+class Contact(models.Model):
 
-    owner = models.ForeignKey('Customer', verbose_name='Владелец', on_delete=models.CASCADE)
-    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
-    total_products = models.PositiveIntegerField(default=0)
-    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
-
-    def __str__(self):
-        return str(self.id)
-
-
-class Customer(models.Model):
-
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    phone = models.CharField(max_length=20, verbose_name='Номер телефона')
-    address = models.CharField(max_length=255, verbose_name='Адрес')
+    phone_number = models.CharField(max_length=255, verbose_name='Номер телефона')
 
     def __str__(self):
-        return 'Покупатель: {}'.format(self.user.first_name, self.user.last_name)
+        return '{}'.format(self.phone_number)
+
+
+class OurProject(models.Model):
+
+    title = models.CharField(max_length=255, verbose_name='Наименование')
+    slug = models.SlugField(unique=True)
+    image = models.ImageField(upload_to='', verbose_name='Изображение')
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        image = self.image
+        img = Image.open(image)
+        min_height, min_width = self.MIN_RESOLUTION
+        max_height, max_width = self.MAX_RESOLUTION
+        if img.height > max_height or img.width > max_width:
+            new_img = img.convert('RGB')
+            resized_new_img = new_img.resize((500, 500), Image.ANTIALIAS)
+            filestream = BytesIO()
+            resized_new_img.save(filestream, 'JPEG', quality=90)
+            name = '{}.jpeg'.format(*self.image.name.split('.'))
+            filestream.seek(0)
+            self.image = InMemoryUploadedFile(filestream, 
+            'ImageField', name, 'jpeg/image', sys.getsizeof(filestream), None)
+        super().save(*args, **kwargs)
+    
+    def delete(self, using=None, keep_parents=False):
+        self.image.storage.delete(self.image.name)
+        super().delete()
