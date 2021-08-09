@@ -22,14 +22,16 @@ def review(request):
     return render(request, 'main/review.html', {'contacts':contacts, 'projects': projects })
 
 def about(request):
-    return render(request, 'main/about.html')
+    contacts = Contact.objects.all()
+    return render(request, 'main/about.html', {'contacts':contacts})
 
 
 class ProductDetailView(DetailView):
 
     CT_MODEL_MODEL_CLASS = {
         'tile' : Tile,
-        'stair' : Stair
+        'stair' : Stair,
+        'pavingslab': PavingSlab
     }
 
     def dispatch(self, request, *args, **kwargs):
