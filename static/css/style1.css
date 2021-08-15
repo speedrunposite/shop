@@ -47,7 +47,7 @@
     width: 46px;
     height: 46px;
     background-image: url('/static/assets/icons/up-arrow.svg');
-    transition: .3s;
+    transition: .3s ease-in-out;
 }
 #scroll_up:hover{
     transform: translateY(-20%);
