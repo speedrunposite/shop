@@ -1,29 +1,29 @@
 {%extends 'main/index.html'%}
 {% load static %}
 
-    {% block body %}
-    <main class="container">
+{% block body %}
+<main class="container-fluid" id="">
+        <img src="{% static '/assets/img1_about.jpg' %}" class="rounded " style="width: 40%; height: auto; margin: 1.5rem 30%;">
         <h3 class="text-center mt-5">Данила Мастер.кз является дочерней компанией Российская компании «Данила Мастер» ООО Руский гранит.</h3>
         <div class="mt-5">
             <h5 class="text-start">Имеем свой карьер по добыче гранита в Казахстане<h5>
-            <img src="{% static '/assets/img1_about.jpg' %}" class="rounded float-end img-thumbnail img_about">
+            <img src="{% static '/assets/img3_about.jpg' %}" class="rounded float-end img-thumbnail img_about ">
         </div>
         <div class="text-start">
             И на данный момент гранитные карьеры в собственности завода «Русский Гранит» - карьеры «Дымовский» и «Ладожский» (Фото)
             Остальная продукция- на прямую с производителями, поэтому наши цены ниже чем в других
             Вы всегда можете купить гранит, в слэбах, плите и других изделиях.
         </div>
-        <div class="mt-5 text-start mb-5">
+        <div class="mt-3 text-start mb-5">
+            <img src="{% static '/assets/img2_about.jpg' %}" class="float-start img_about">
             В Российской компании – наличие самого большого склада продукции, который насчитывает порядка 150 тысяч квадратных
             метров. Его можно смело назвать галереей натуральных камней, собранных со всех уголков мира.
-            <img src="{% static '/assets/img2_about.jpg' %}" class="float-start img_about">
             
         </div>
-        <div class="mt-5 text-start mb-5">
+        <div class="mt-5 text-start mb-4">
             Перечень стран, камень из которых представлен на складе компании, заслуживает уважения. Это – Греция и Италия, Испания и
             Индия, Турция и Бразилия, Китай и Египет, Россия и Украина, Иран и Пакистан, Ангола и Намибия, Финляндия и Вьетнам и
             другие страны.
-            <img src="{% static '/assets/img3_about.jpg' %}" class="rounded float-end img-thumbnail img_about">
             
         </div>
         <div class="mt-5 text-start mb-5">
