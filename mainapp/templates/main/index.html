@@ -28,7 +28,7 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                    <li class="nav-item"><a class="nav-link" aria-current="page"
                             href="{% url 'home' %}">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Наши проекты</a></li>
@@ -72,7 +72,6 @@
             </div>
         </div>
     </nav>
-    <span id="scroll_up" onclick="topFunction()"></span>
     {%block body %}
     <!-- Header-->
     <header class="bg-dark py-5">
@@ -89,7 +88,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{% static '/assets/slide_1.jpg' %}
-                            " class="d-block w-100" alt="...">
+                            " class="d-block w-100" alt="...">  
                     </div>
                     <div class="carousel-item">
                         <img src="{% static '/assets/slide_2.jpg' %}" class="d-block w-100" alt="...">
