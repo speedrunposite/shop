@@ -23,13 +23,17 @@
 
 .text-start,
 .text-end{
-    font-size: 24px;
+    font-size: 28px;
 }
 .img_about{
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 450px;
+    max-height: auto;
 }
 
 .list-group-item{
     width: 1000px;
+}
+
+footer{
+    z-index: 9999;
 }
