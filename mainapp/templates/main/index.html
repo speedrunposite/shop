@@ -28,10 +28,7 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" aria-current="page"
-                            href="{% url 'home' %}">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Наши проекты</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">Главная</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>
@@ -45,6 +42,8 @@
                             <li><a class="dropdown-item" href="/#paving_slabs">Плиты мощения</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'review' %}">Наши проекты</a></li>
                 </ul>
                 <form class="d-flex">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Контакты</button>
@@ -59,6 +58,9 @@
                             <div class="modal-body">
                               {% for contact in contacts %}
                                 {{contact.phone_number}}
+                                <br>
+                                {{contact.email}}
+                                <br>
                                 <br>
                               {% endfor %}
                             </div>
@@ -225,5 +227,4 @@
     <!-- Core theme JS-->
     <script src="{% static 'js/script.js' %}"></script>
 </body>
-
 </html>
