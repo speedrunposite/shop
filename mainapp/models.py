@@ -139,9 +139,10 @@ class PavingSlab(Product):
 class Contact(models.Model):
 
     phone_number = models.CharField(max_length=255, verbose_name='Номер телефона')
+    email = models.EmailField(verbose_name='Email', null=True, blank=True)
 
     def __str__(self):
-        return 'Номер телефона: {}'.format(self.phone_number)
+        return 'Номер: {} Почта: {}'.format(self.phone_number, self.email)
 
 
 class OurProject(models.Model):
