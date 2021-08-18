@@ -104,7 +104,6 @@ class Tile(Product):
 
     size = models.CharField(max_length=255, verbose_name='Размер')
     unit = models.CharField(max_length=255, verbose_name='Единица измерения')
-    width = models.CharField(max_length=255, verbose_name='Толщина')
 
 
     def __str__(self):
@@ -129,7 +128,6 @@ class PavingSlab(Product):
 
     size = models.CharField(max_length=255, verbose_name='Размер')
     unit = models.CharField(max_length=255, verbose_name='Единица измерения')
-    width = models.CharField(max_length=255, verbose_name='Толщина')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
