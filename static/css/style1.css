@@ -37,3 +37,7 @@
 footer{
     z-index: 9999;
 }
+
+p .card-text{
+    word-wrap: break-word;
+}
