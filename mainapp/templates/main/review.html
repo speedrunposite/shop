@@ -75,9 +75,17 @@
                         <ul class="list-group">
                             {% for project in projects %}
                             <li class="list-group-item border border-4 mt-3 pt-3 pb-3">
-                                <img src="{{project.image.url}}" class="rounded float-start me-3">
-                                <h5 class="text-center">{{project.title}}</h5>
-                                <p>{{project.description}}</p>
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="{{project.image.url}}" class="img-fluid rounded-start">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{project.title}}</h5>
+                                      <p class="card-text" style="word-wrap: break-word;">{{project.description}}</p>
+                                    </div>
+                                  </div>
+                                </div>
                             </li>
 
                             {% endfor %}
