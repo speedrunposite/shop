@@ -74,7 +74,8 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='', verbose_name='Изображение')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
+    min_price = models.DecimalField(max_digits=9, decimal_places=2, default=0, verbose_name='Цена от')
+    max_price = models.DecimalField(max_digits=9, decimal_places=2, default=0, verbose_name='Цена до')
 
     def __str__(self):
         return self.title
