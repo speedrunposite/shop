@@ -24,7 +24,7 @@ def review(request):
 def about(request):
     contacts = Contact.objects.all()
     return render(request, 'main/about.html', {'contacts':contacts})
-
+    
 
 class ProductDetailView(DetailView):
 
