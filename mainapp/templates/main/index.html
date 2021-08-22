@@ -43,6 +43,7 @@
                             </li>
                             <li><a class="dropdown-item" href="/#tile">Плитка</a></li>
                             <li><a class="dropdown-item" href="/#stair">Лестница</a></li>
+                            <li><a class="dropdown-item" href="/#paving_stones">Брусчатка</a></li>
                             <li><a class="dropdown-item" href="/#paving_slabs">Плиты мощения</a></li>
                         </ul>
                     </li>
@@ -177,6 +178,40 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ stair.get_absolute_url }}">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <h2 id="paving_stones">Брусчатка</h2>
+            <div class="line mb-5"></div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
+                {% for pv_stone in paving_stones %}
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="main-card-img" src="{{pv_stone.image.url}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                
+                                <h5 class="fw-bolder">
+                                    {{pv_stone.title}}
+                                </h5>
+                                    от {{pv_stone.min_price}} тг до {{pv_stone.max_price}} тг за {{pv_stone.unit}}
+                                <!-- Product price-->
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ pv_stone.get_absolute_url }}">Подробнее</a>
                             </div>
                         </div>
                     </div>

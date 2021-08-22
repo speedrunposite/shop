@@ -7,13 +7,14 @@ from .models import *
 from .mixins import ContactDetailMixin
 
 def index(request):
-    products = LatestProducts.objects.get_products_for_main_page('tile', 'stair')
+    products = LatestProducts.objects.get_products_for_main_page('tile', 'stair', 'pavingslab', 'pavingstone')
     tiles = LatestProducts.objects.get_products_for_main_page('tile')
     stairs = LatestProducts.objects.get_products_for_main_page('stair')
     paving_slabs = LatestProducts.objects.get_products_for_main_page('pavingslab')
+    paving_stones = LatestProducts.objects.get_products_for_main_page('pavingstone')
     contacts = Contact.objects.all()
     return render(request, 'main/index.html',
-     {'tiles': tiles, 'stairs': stairs,'paving_slabs': paving_slabs,
+     {'tiles': tiles, 'stairs': stairs,'paving_slabs': paving_slabs, 'paving_stones' : paving_stones, 
     'contacts':contacts , 'products': products})
 
 def review(request):
@@ -31,7 +32,8 @@ class ProductDetailView(ContactDetailMixin, DetailView):
     CT_MODEL_MODEL_CLASS = {
         'tile' : Tile,
         'stair' : Stair,
-        'pavingslab': PavingSlab
+        'pavingslab' : PavingSlab,
+        'pavingstone': PavingStone
     }
 
     def dispatch(self, request, *args, **kwargs):

@@ -137,6 +137,18 @@ class PavingSlab(Product):
         return get_product_url(self, 'product_detail')
 
 
+class PavingStone(Product):
+
+    size = models.CharField(max_length=255, verbose_name='Размер')
+    unit = models.CharField(max_length=255, verbose_name='Единица измерения')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+        
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
 class Contact(models.Model):
 
     phone_number = models.CharField(max_length=255, verbose_name='Номер телефона')
