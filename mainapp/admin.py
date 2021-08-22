@@ -98,6 +98,35 @@ class PavingSlabAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class PavingStoneAdminForm(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].help_text = mark_safe(
+            '<span style="color:red; font-size:14px;">Загружайте изображение с минимальным разрешением {}x{} и размером не более 5MB.<br>\
+                Изображение с разрешением более {}x{} автоматически сожмется до максимально возможного.</span>'.format(
+            *Product.MIN_RESOLUTION, *Product.MAX_RESOLUTION))
+
+    def clean_image(self):
+        image = self.cleaned_data['image']
+        img = Image.open(image)
+        min_height, min_width = Product.MIN_RESOLUTION
+        max_height, max_width = Product.MAX_RESOLUTION
+        if image.size > Product.MAX_IMAGE_SIZE:
+            raise ValidationError('Размер изображения не должен превышать 5MB!')
+        if img.height < min_height or img.width < min_width:
+            raise ValidationError('Разрешение изображения меньше минимального!')
+        return image
+
+class PavingStoneAdmin(admin.ModelAdmin):
+
+    form = PavingStoneAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='paving_stones'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 class OurProjectAdminForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -128,4 +157,5 @@ admin.site.register(Contact)
 admin.site.register(Tile, TileAdmin)
 admin.site.register(Stair, StairAdmin)
 admin.site.register(PavingSlab, PavingSlabAdmin)
+admin.site.register(PavingStone, PavingStoneAdmin)
 admin.site.register(OurProject, OurProjectAdmin)
