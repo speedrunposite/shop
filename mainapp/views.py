@@ -4,9 +4,9 @@ from django.views import generic
 from django.views.generic import DetailView
 
 from .models import *
+from .mixins import ContactDetailMixin
 
 def index(request):
-    # тут вернем шаблон
     products = LatestProducts.objects.get_products_for_main_page('tile', 'stair')
     tiles = LatestProducts.objects.get_products_for_main_page('tile')
     stairs = LatestProducts.objects.get_products_for_main_page('stair')
@@ -26,7 +26,7 @@ def about(request):
     return render(request, 'main/about.html', {'contacts':contacts})
     
 
-class ProductDetailView(DetailView):
+class ProductDetailView(ContactDetailMixin, DetailView):
 
     CT_MODEL_MODEL_CLASS = {
         'tile' : Tile,
