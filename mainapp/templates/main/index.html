@@ -123,7 +123,7 @@
             <div class="line mb-5"></div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
                 {% for tile in tiles %}
-                <div class="col mb-5">
+                <div class="col mb-5" style="min-width: 205px; min-height: auto;">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="main-card-img" src="{{tile.image.url}}" alt="..." />
@@ -135,7 +135,9 @@
                                 <h5 class="fw-bolder">
                                     {{tile.title}}
                                 </h5>
-                                    от {{tile.min_price}} тг до {{tile.max_price}} тг за {{tile.unit}}
+                                    от {{ tile.min_price }} тг {% if tile.max_price != 0 %}
+                                    до {{ tile.max_price }} тг
+                                {% endif %} за {{tile.unit}}
                                 <!-- Product price-->
                             </div>
                         </div>
@@ -156,7 +158,7 @@
             <div class="line mb-5"></div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
                 {% for stair in stairs %}
-                <div class="col mb-5">
+                <div class="col mb-5" style="min-width: 205px; min-height: auto;">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="main-card-img" src="{{stair.image.url}}" alt="..." />
@@ -168,7 +170,9 @@
                                 <h5 class="fw-bolder">
                                     {{stair.title}}
                                 </h5>
-                                    от {{stair.min_price}} тг до {{stair.max_price}} тг за {{stair.unit}}
+                                    от {{ stair.min_price }} тг {% if stair.max_price != 0 %}
+                                    до {{ stair.max_price }} тг
+                                {% endif %} за {{stair.unit}}
                                 <!-- Product price-->
                             </div>
                         </div>
@@ -190,7 +194,7 @@
             <div class="line mb-5"></div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
                 {% for pv_stone in paving_stones %}
-                <div class="col mb-5">
+                <div class="col mb-5" style="min-width: 205px; min-height: auto;">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="main-card-img" src="{{pv_stone.image.url}}" alt="..." />
@@ -202,7 +206,9 @@
                                 <h5 class="fw-bolder">
                                     {{pv_stone.title}}
                                 </h5>
-                                    от {{pv_stone.min_price}} тг до {{pv_stone.max_price}} тг за {{pv_stone.unit}}
+                                    от {{ pv_stone.min_price }} тг {% if pv_stone.max_price != 0 %}
+                                    до {{ pv_stone.max_price }} тг
+                                {% endif %} за {{pv_stone.unit}}
                                 <!-- Product price-->
                             </div>
                         </div>
@@ -224,7 +230,7 @@
             <div class="line mb-5"></div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
                 {% for pv_slab in paving_slabs %}
-                <div class="col mb-5">
+                <div class="col mb-5" style="min-width: 205px; min-height: auto;">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="main-card-img" src="{{pv_slab.image.url}}" alt="..." />
@@ -236,7 +242,9 @@
                                 <h5 class="fw-bolder">
                                     {{pv_slab.title}}
                                 </h5>
-                                    от {{pv_slab.min_price}} тг до {{pv_slab.max_price}} тг за {{pv_slab.unit}}
+                                    от {{ pv_slab.min_price }} тг {% if pv_slab.max_price != 0 %}
+                                    до {{ pv_slab.max_price }} тг
+                                {% endif %} за {{pv_slab.unit}}
                                 <!-- Product price-->
                             </div>
                         </div>
