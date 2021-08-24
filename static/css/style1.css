@@ -13,6 +13,7 @@
 }
 .card-img, .card-img-top{
     height:562px;
+    min-width: 100px;
 }
 
 .line{
